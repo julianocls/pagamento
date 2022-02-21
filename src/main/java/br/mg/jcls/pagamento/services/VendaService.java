@@ -72,7 +72,7 @@ public class VendaService {
     private Venda salvaItens(VendaVO vendaVO, Venda venda) {
         var produtosSalvos = new ArrayList<ProdutoVenda>();
         vendaVO.getProdutos().forEach(p -> {
-            ProdutoVenda pv = new ProdutoVenda();
+            ProdutoVenda pv = ProdutoVenda.create(p);
             pv.setVenda(venda);
             produtosSalvos.add(produtoVendaRepository.save(pv));
         });
