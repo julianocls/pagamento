@@ -31,7 +31,7 @@ public class VendaVO extends RepresentationModel<VendaVO> implements Serializabl
     private Date data;
 
     @JsonProperty("produtos")
-    private List<ProdutoVenda> produtos = new ArrayList<>(); ;
+    private List<ProdutoVendaVO> produtos = new ArrayList<>(); ;
 
     @JsonProperty("valorTotal")
     private Double valorTotal;

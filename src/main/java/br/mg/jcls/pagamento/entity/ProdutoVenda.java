@@ -1,6 +1,9 @@
 package br.mg.jcls.pagamento.entity;
 
+import br.mg.jcls.pagamento.vo.ProdutoVendaVO;
+import br.mg.jcls.pagamento.vo.VendaVO;
 import lombok.*;
+import org.modelmapper.ModelMapper;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -31,4 +34,7 @@ public class ProdutoVenda implements Serializable {
     @JoinColumn(name = "id_venda")
     private Venda venda;
 
+    public static ProdutoVenda create(ProdutoVendaVO produtoVendaVO) {
+        return new ModelMapper().map(produtoVendaVO, ProdutoVenda.class);
+    }
 }
