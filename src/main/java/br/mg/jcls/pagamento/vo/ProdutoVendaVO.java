@@ -20,6 +20,9 @@ public class ProdutoVendaVO extends RepresentationModel<ProdutoVendaVO> implemen
 
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("id")
+    private Long id;
+
     @JsonProperty("idProduto")
     private Long idProduto;
 
