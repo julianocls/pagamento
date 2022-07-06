@@ -3,6 +3,7 @@ package br.mg.jcls.pagamento.controller;
 import br.mg.jcls.pagamento.services.VendaService;
 import br.mg.jcls.pagamento.vo.VendaVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -22,6 +23,9 @@ public class VendaController {
     private final VendaService vendaService;
     private final PagedResourcesAssembler<VendaVO> assembler;
 
+    @Value("${server.port}")
+    private String port;
+
     @Autowired
     public VendaController(VendaService vendaService, PagedResourcesAssembler<VendaVO> assembler) {
         this.vendaService = vendaService;
@@ -33,6 +37,11 @@ public class VendaController {
         var vendaVO = vendaService.findById(id);
         vendaVO.add(linkTo(methodOn(VendaController.class).findById(id)).withSelfRel());
         return vendaVO;
+    }
+
+    @GetMapping("/mostrarPorta")
+    public String mostrarPorta() {
+        return port;
     }
 
     @GetMapping(produces = {"application/json", "application/xml", "application/x-yaml"})
